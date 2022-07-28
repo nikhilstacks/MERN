@@ -1,5 +1,18 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+
+// ----------  DB key  --------------
+const Db =
+  "mongodb+srv://nikhilstacks:nikhilstacks@cluster0.gi4pw.mongodb.net/MERN?retryWrites=true&w=majority";
+
+// ----------DB connect-------------
+mongoose
+  .connect(Db)
+  .then(() => {
+    console.log("connection successfull...");
+  })
+  .catch((err) => console.log("connection unsuccessfull..."));
 
 // ----------Middleware--------------
 const Middleware = (req, res, next) => {
