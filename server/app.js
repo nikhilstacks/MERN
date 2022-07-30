@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
+// if we require a file
+// if a function is called inside that file it will automatically run when it is required
+// require("../db/testing");
+
 dotenv.config({ path: "../config.env" });
 require("../db/conn");
 
