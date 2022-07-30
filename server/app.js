@@ -7,8 +7,10 @@ const app = express();
 // if a function is called inside that file it will automatically run when it is required
 // require("../db/testing");
 
+// ---------  DB  ------------------
 dotenv.config({ path: "../config.env" });
 require("../db/conn");
+// const USER = require("../model/userSchema");
 
 // ---------   PORT    --------------
 const PORT = process.env.PORT;
