@@ -11,12 +11,12 @@ const app = express();
 dotenv.config({ path: "../config.env" });
 require("../db/conn");
 // const USER = require("../model/userSchema");
-app.use(express.json());
 
 // ---------   PORT    --------------
 const PORT = process.env.PORT;
 
 // ---------  Routes   -------------
+app.use(express.json()); // converting returning data into object form from json type
 app.use(require("../router/auth"));
 
 // ----------Middleware--------------
