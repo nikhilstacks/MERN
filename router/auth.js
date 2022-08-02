@@ -84,6 +84,8 @@ router.post("/signin", async (req, res) => {
       const isMatch = await bcrypt.compare(password, userExist.password); //comparing hash with pass
       if (isMatch) {
         res.status(201).json({ message: "user login successfully..." });
+        const token = await userExist.generateAuthToken();
+        console.log(token);
       } else {
         res.status(401).json({ error: "wrong credentials..." });
       }
