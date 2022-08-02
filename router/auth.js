@@ -54,12 +54,14 @@ router.post("/register", async (req, res) => {
 
     if (existUser) {
       return res.status(422).json({ error: "Email Already available..." });
+    } else if (password != cpassword) {
+      return res.status(422).json({ error: "Password is no matching..." });
+    } else {
+      const user = new User({ name, email, phone, work, password, cpassword });
+
+      await user.save();
+      res.status(201).json({ message: "data inserted sucessfully..." });
     }
-
-    const user = new User({ name, email, phone, work, password, cpassword });
-
-    await user.save();
-    res.status(201).json({ message: "data inserted sucessfully..." });
   } catch (err) {
     console.log(err);
   }
@@ -74,7 +76,6 @@ router.post("/signin", async (req, res) => {
   try {
     const userExist = await User.findOne({
       email: email,
-      password: password,
     });
 
     console.log(userExist);
