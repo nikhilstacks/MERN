@@ -85,7 +85,7 @@ router.post("/signin", async (req, res) => {
       if (isMatch) {
         res.status(201).json({ message: "user login successfully..." });
       } else {
-        res.status(401).json({ error: "wrong credentials pass..." });
+        res.status(401).json({ error: "wrong credentials..." });
       }
     } else {
       res.status(401).json({ error: "wrong credentials..." });
