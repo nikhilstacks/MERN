@@ -59,7 +59,7 @@ router.post("/register", async (req, res) => {
     const user = new User({ name, email, phone, work, password, cpassword });
 
     await user.save();
-    res.status(201).send({ message: "data inserted sucessfully..." });
+    res.status(201).json({ message: "data inserted sucessfully..." });
   } catch (err) {
     console.log(err);
   }
@@ -68,7 +68,7 @@ router.post("/register", async (req, res) => {
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    res.status(422).send({ message: "INVALID DETAILS..." });
+    res.status(422).json({ message: "INVALID DETAILS..." });
   }
 
   try {
@@ -80,14 +80,14 @@ router.post("/signin", async (req, res) => {
     console.log(userExist);
 
     if (userExist) {
-      res.status(201).send({
+      res.status(201).json({
         message: "user login successfully...",
       });
     } else {
-      res.status(401).send({ error: "there is an error..." });
+      res.status(401).json({ error: "there is an error..." });
     }
   } catch (err) {
-    res.status(404).send({ err: err });
+    res.status(404).json({ err: err });
   }
 });
 
