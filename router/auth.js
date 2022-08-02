@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 
 // -----------DB connection------
 require("../db/conn");
@@ -77,15 +78,17 @@ router.post("/signin", async (req, res) => {
     const userExist = await User.findOne({
       email: email,
     });
-
-    console.log(userExist);
+    // console.log(userExist);
 
     if (userExist) {
-      res.status(201).json({
-        message: "user login successfully...",
-      });
+      const isMatch = await bcrypt.compare(password, userExist.password); //comparing hash with pass
+      if (isMatch) {
+        res.status(201).json({ message: "user login successfully..." });
+      } else {
+        res.status(401).json({ error: "wrong credentials pass..." });
+      }
     } else {
-      res.status(401).json({ error: "there is an error..." });
+      res.status(401).json({ error: "wrong credentials..." });
     }
   } catch (err) {
     res.status(404).json({ err: err });
