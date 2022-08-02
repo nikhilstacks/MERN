@@ -10,7 +10,38 @@ router.get("/", (req, res) => {
   res.send("This is the file send from auth.js..");
 });
 
-router.post("/register", (req, res) => {
+// ---------------- With Promises --------------------------------
+
+// router.post("/register", (req, res) => {
+//   const { name, email, phone, work, password, cpassword } = req.body;
+//   if (!name || !email || !phone || !work || !password || !cpassword) {
+//     return res
+//       .status(422)
+//       .json({ error: "This is an error enter value correctly..." });
+//   }
+
+//   User.findOne({ email: email }).then((existUser) => {
+//     if (existUser) {
+//       return res.status(422).json({ error: "Email Already available..." });
+//     }
+
+//     const user = new User({ name, email, phone, work, password, cpassword });
+//     user
+//       .save()
+//       .then(() => {
+//         res.status(201).send({ message: "data inserted sucessfully..." });
+//       })
+//       .catch(() => {
+//         res.status(500).send({ error: "insert data correctly..." });
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   });
+
+// --------------------- Async/Await -------------------------------
+
+router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
   if (!name || !email || !phone || !work || !password || !cpassword) {
     return res
@@ -18,26 +49,20 @@ router.post("/register", (req, res) => {
       .json({ error: "This is an error enter value correctly..." });
   }
 
-  //   console.log(req.body);
-  //   res.json({ message: req.body });
-  User.findOne({ email: email }).then((existUser) => {
+  try {
+    const existUser = await User.findOne({ email: email });
+
     if (existUser) {
       return res.status(422).json({ error: "Email Already available..." });
     }
 
     const user = new User({ name, email, phone, work, password, cpassword });
-    user
-      .save()
-      .then(() => {
-        res.status(201).send({ message: "data inserted sucessfully..." });
-      })
-      .catch(() => {
-        res.status(500).send({ error: "insert data correctly..." });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+
+    await user.save();
+    res.status(201).send({ message: "data inserted sucessfully..." });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;
