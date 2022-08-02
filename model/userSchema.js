@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   phone: {
-    type: String,
+    type: Number,
     required: true,
   },
   work: {
@@ -24,10 +24,6 @@ const userSchema = new mongoose.Schema({
   },
   cpassword: {
     type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
     required: true,
   },
 });
