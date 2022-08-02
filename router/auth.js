@@ -65,4 +65,30 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post("/signin", async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    res.status(422).send({ message: "INVALID DETAILS..." });
+  }
+
+  try {
+    const userExist = await User.findOne({
+      email: email,
+      password: password,
+    });
+
+    console.log(userExist);
+
+    if (userExist) {
+      res.status(201).send({
+        message: "user login successfully...",
+      });
+    } else {
+      res.status(401).send({ error: "there is an error..." });
+    }
+  } catch (err) {
+    res.status(404).send({ err: err });
+  }
+});
+
 module.exports = router;
