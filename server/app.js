@@ -8,8 +8,8 @@ const app = express();
 // require("../db/testing");
 
 // ---------  DB  ------------------
-dotenv.config({ path: "../config.env" });
-require("../db/conn");
+dotenv.config({ path: "./config.env" });
+require("./db/conn");
 // const USER = require("../model/userSchema");
 
 // ---------   PORT    --------------
@@ -17,7 +17,7 @@ const PORT = process.env.PORT;
 
 // ---------  Routes   -------------
 app.use(express.json()); // converting returning data into object form from json type
-app.use(require("../router/auth"));
+app.use(require("./router/auth"));
 
 // ----------Middleware--------------
 const Middleware = (req, res, next) => {
