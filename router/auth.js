@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 // -----------DB connection------
 require("../db/conn");
 const User = require("../model/userSchema");
+const { set } = require("mongoose");
 
 // ------------Routes-----------
 router.get("/", (req, res) => {
@@ -83,9 +84,16 @@ router.post("/signin", async (req, res) => {
     if (userExist) {
       const isMatch = await bcrypt.compare(password, userExist.password); //comparing hash with pass
       if (isMatch) {
-        res.status(201).json({ message: "user login successfully..." });
         const token = await userExist.generateAuthToken();
         console.log(token);
+
+        // cookies are not set
+        res.cookie("jwtToken", token, {
+          expires: new Date(Date.now() + 25892000000),
+          httpOnly: true,
+        });
+
+        res.status(201).json({ message: "user login successfully..." });
       } else {
         res.status(401).json({ error: "wrong credentials..." });
       }

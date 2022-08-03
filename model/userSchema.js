@@ -47,6 +47,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+// generating authentication token
 userSchema.methods.generateAuthToken = async function () {
   try {
     let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
