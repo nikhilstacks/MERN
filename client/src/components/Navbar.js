@@ -2,6 +2,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { NavLink } from "react-router-dom";
+import logo from "../images/Ns.png";
+import "../App.css";
 
 const Navbar = () => {
   return (
@@ -9,7 +11,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
-            Navbar
+            <img src={logo} alt="This is my logo"></img>
           </NavLink>
           <button
             className="navbar-toggler"
