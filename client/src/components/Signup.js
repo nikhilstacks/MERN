@@ -1,5 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
 
 const Signup = () => {
   return (
@@ -12,25 +11,25 @@ const Signup = () => {
                 <div className="form-group col-sm-6 flex-column d-flex">
                   {" "}
                   <label className="form-control-label px-3">
-                    First name<span className="text-danger"> *</span>
+                    Your Name<span className="text-danger"> *</span>
                   </label>{" "}
                   <input
                     type="text"
-                    id="fname"
+                    id="name"
                     name="fname"
-                    placeholder="Enter your first name"
+                    placeholder="Enter your name"
                   />{" "}
                 </div>
                 <div className="form-group col-sm-6 flex-column d-flex">
                   {" "}
                   <label className="form-control-label px-3">
-                    Last name<span className="text-danger"> *</span>
+                    email<span className="text-danger"> *</span>
                   </label>{" "}
                   <input
                     type="text"
-                    id="lname"
-                    name="lname"
-                    placeholder="Enter your last name"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
                   />{" "}
                 </div>
               </div>
@@ -38,9 +37,14 @@ const Signup = () => {
                 <div className="form-group col-sm-6 flex-column d-flex">
                   {" "}
                   <label className="form-control-label px-3">
-                    Business email<span className="text-danger"> *</span>
+                    Your profession<span className="text-danger"> *</span>
                   </label>{" "}
-                  <input type="text" id="email" name="email" placeholder="" />{" "}
+                  <input
+                    type="text"
+                    id="profession"
+                    name="profession"
+                    placeholder=""
+                  />{" "}
                 </div>
                 <div className="form-group col-sm-6 flex-column d-flex">
                   {" "}
@@ -54,26 +58,36 @@ const Signup = () => {
                 <div className="form-group col-sm-6 flex-column d-flex">
                   {" "}
                   <label className="form-control-label px-3">
-                    Job title<span className="text-danger"> *</span>
+                    password<span className="text-danger"> *</span>
                   </label>{" "}
-                  <input type="text" id="job" name="job" placeholder="" />{" "}
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder=""
+                  />{" "}
                 </div>
               </div>
               <div className="row justify-content-between text-left">
-                <div className="form-group col-12 flex-column d-flex">
+                <div className="form-group col-sm-6 flex-column d-flex">
                   {" "}
                   <label className="form-control-label px-3">
-                    What would you be using Flinks for?
+                    Confirm password
                     <span className="text-danger"> *</span>
                   </label>{" "}
-                  <input type="text" id="ans" name="ans" placeholder="" />{" "}
+                  <input
+                    type="password"
+                    id="cpassword"
+                    name="cpassword"
+                    placeholder=""
+                  />{" "}
                 </div>
               </div>
               <div className="row justify-content-end">
                 <div className="form-group col-sm-6">
                   {" "}
-                  <button type="submit" className="btn-block btn-primary">
-                    Request a demo
+                  <button type="button" class="btn btn-primary">
+                    Submit
                   </button>{" "}
                 </div>
               </div>
