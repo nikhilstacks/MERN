@@ -2,7 +2,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { NavLink } from "react-router-dom";
-import logo from "../images/Ns.png";
+import logo from "../images/logo192.png";
 import "../App.css";
 
 const Navbar = () => {
