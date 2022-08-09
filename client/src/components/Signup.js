@@ -1,6 +1,23 @@
-import React from "react"; //login update...
+import React, { useState } from "react";
 
 const Signup = () => {
+  let [user, setUser] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    work: "",
+    password: "",
+    cpassword: "",
+  });
+
+  let name, value;
+  const handleInput = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+
+    setUser({ ...user, [name]: value });
+  };
+
   return (
     <div className="container-fluid px-1 py-5 mx-auto">
       <div className="row d-flex justify-content-center">
@@ -16,7 +33,9 @@ const Signup = () => {
                   <input
                     type="text"
                     id="name"
-                    name="fname"
+                    name="name"
+                    value={user.name}
+                    onChange={(e) => handleInput(e)}
                     placeholder="Enter your name"
                   />{" "}
                 </div>
@@ -29,6 +48,8 @@ const Signup = () => {
                     type="text"
                     id="email"
                     name="email"
+                    value={user.email}
+                    onChange={(e) => handleInput(e)}
                     placeholder="Enter your email"
                   />{" "}
                 </div>
@@ -42,7 +63,9 @@ const Signup = () => {
                   <input
                     type="text"
                     id="profession"
-                    name="profession"
+                    name="work"
+                    value={user.work}
+                    onChange={(e) => handleInput(e)}
                     placeholder=""
                   />{" "}
                 </div>
@@ -51,7 +74,14 @@ const Signup = () => {
                   <label className="form-control-label px-3">
                     Phone number<span className="text-danger"> *</span>
                   </label>{" "}
-                  <input type="text" id="mob" name="mob" placeholder="" />{" "}
+                  <input
+                    type="text"
+                    id="mob"
+                    onChange={(e) => handleInput(e)}
+                    value={user.phone}
+                    name="phone"
+                    placeholder=""
+                  />{" "}
                 </div>
               </div>
               <div className="row justify-content-between text-left">
@@ -63,6 +93,8 @@ const Signup = () => {
                   <input
                     type="password"
                     id="password"
+                    value={user.password}
+                    onChange={(e) => handleInput(e)}
                     name="password"
                     placeholder=""
                   />{" "}
@@ -78,6 +110,8 @@ const Signup = () => {
                   <input
                     type="password"
                     id="cpassword"
+                    onChange={(e) => handleInput(e)}
+                    value={user.cpassword}
                     name="cpassword"
                     placeholder=""
                   />{" "}
@@ -86,7 +120,7 @@ const Signup = () => {
               <div className="row justify-content-end">
                 <div className="form-group col-sm-6">
                   {" "}
-                  <button type="button" class="btn btn-primary">
+                  <button type="button" className="btn btn-primary">
                     Submit
                   </button>{" "}
                 </div>
