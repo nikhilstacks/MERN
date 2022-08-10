@@ -15,7 +15,7 @@ const Signup = () => {
     name = e.target.name;
     value = e.target.value;
 
-    setUser({ ...user, [name]: value });
+    setUser({ ...user, [name]: value }); //using rest operator to open object and overwriting existing  value
   };
 
   return (
