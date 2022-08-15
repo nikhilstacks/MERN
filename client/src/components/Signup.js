@@ -12,10 +12,33 @@ const Signup = () => {
 
   let name, value;
   const handleInput = (e) => {
-    name = e.target.name;
-    value = e.target.value;
+    name = e.target.name; //taking name of the input field
+    value = e.target.value; //taking every value of that field
 
     setUser({ ...user, [name]: value }); //using rest operator to open object and overwriting existing  value
+  };
+
+  const PostData = async (e) => {
+    e.preventDefault();
+
+    const { name, email, phone, work, password, cpassword } = user;
+
+    const res = await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        work: work,
+        password: password,
+        cpassword: cpassword,
+      }),
+    });
+
+    const data = res.json();
   };
 
   return (
@@ -23,7 +46,7 @@ const Signup = () => {
       <div className="row d-flex justify-content-center">
         <div className="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
           <div className="card">
-            <form className="form-card">
+            <form method="POST" className="form-card">
               <div className="row justify-content-between text-left">
                 <div className="form-group col-sm-6 flex-column d-flex">
                   {" "}
@@ -120,7 +143,11 @@ const Signup = () => {
               <div className="row justify-content-end">
                 <div className="form-group col-sm-6">
                   {" "}
-                  <button type="button" className="btn btn-primary">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={(e) => PostData(e)}
+                  >
                     Submit
                   </button>{" "}
                 </div>
