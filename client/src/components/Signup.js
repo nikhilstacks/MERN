@@ -41,16 +41,17 @@ const Signup = () => {
       }),
     });
 
-    const data = res.json();
+    const data = await res.json();
 
     if (res.status === 422 || !data) {
       window.alert("INvalid registration");
       console.log("INvalid registration");
     } else {
+      await console.log(res, data);
       window.alert("registration successfull");
       console.log("registration successfull");
 
-      navigate("/");
+      navigate("/login");
     }
   };
 
