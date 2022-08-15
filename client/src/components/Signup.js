@@ -43,7 +43,7 @@ const Signup = () => {
 
     const data = res.json();
 
-    if (data.status === 422 || !data) {
+    if (res.status === 422 || !data) {
       window.alert("INvalid registration");
       console.log("INvalid registration");
     } else {
@@ -159,7 +159,7 @@ const Signup = () => {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={(e) => PostData(e)}
+                    onClick={PostData}
                   >
                     Submit
                   </button>{" "}
