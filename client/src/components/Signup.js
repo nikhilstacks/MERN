@@ -39,6 +39,14 @@ const Signup = () => {
     });
 
     const data = res.json();
+
+    if (data.status === 422 || !data) {
+      window.alert("INvalid registration");
+      console.log("INvalid registration");
+    } else {
+      window.alert("registration successfull");
+      console.log("registration successfull");
+    }
   };
 
   return (
