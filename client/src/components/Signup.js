@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  let navigate = useNavigate();
+
   let [user, setUser] = useState({
     name: "",
     email: "",
@@ -46,6 +49,8 @@ const Signup = () => {
     } else {
       window.alert("registration successfull");
       console.log("registration successfull");
+
+      navigate("/");
     }
   };
 
