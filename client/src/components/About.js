@@ -17,13 +17,13 @@ const About = () => {
       const data = await res.json();
       console.log(data);
 
-      if (!res.status === 200) {
+      if (res.status === 401) {
+        navigate("/login");
         const error = new Error(res.error);
         throw error;
       }
     } catch (err) {
       console.log(err);
-      navigate("/login");
     }
   };
 

@@ -25,7 +25,7 @@ const Login = () => {
 
     const data = await res.json();
 
-    if (res.status === 400 || !data) {
+    if (res.status === 422 || !data) {
       console.log("invalid details");
       window.alert("INvalid details");
     } else {

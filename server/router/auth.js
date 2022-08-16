@@ -81,6 +81,8 @@ router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     res.status(422).json({ message: "INVALID DETAILS..." });
+    console.log("poora bhar");
+    return;
   }
 
   try {
@@ -104,15 +106,18 @@ router.post("/signin", async (req, res) => {
         res.status(201).json({ message: "user login successfully..." });
         console.log("miracle login hogya");
       } else {
-        res.status(400).json({ error: "wrong credentials..." });
-        console.log("nhi hua match");
+        res.status(422).json({ error: "wrong credentials..." });
+        console.log("nhi hua match password");
+        return;
       }
     } else {
-      res.status(400).json({ error: "wrong credentials..." });
-      console.log("user hai hi nhiii....");
+      res.status(422).json({ error: "wrong credentials..." });
+      console.log("user hai hi nhiii email....");
+      return;
     }
   } catch (err) {
-    res.status(400).json({ err: err });
+    res.status(422).json({ err: err });
+    return;
   }
 });
 
