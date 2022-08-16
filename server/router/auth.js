@@ -114,6 +114,7 @@ router.post("/signin", async (req, res) => {
 
 router.get("/aboutme", authenticate, (req, res) => {
   res.send("this is about me page...");
+  res.send(req.rootUser);
 });
 
 module.exports = router;
