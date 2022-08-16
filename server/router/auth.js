@@ -121,7 +121,13 @@ router.post("/signin", async (req, res) => {
   }
 });
 
+// this is for the about me page route
 router.get("/aboutme", authenticate, (req, res) => {
+  res.send(req.rootUser);
+});
+
+//getting data for the home page
+router.get("/getdata", authenticate, (req, res) => {
   res.send(req.rootUser);
 });
 

@@ -20,7 +20,6 @@ const About = () => {
       const data = await res.json();
       console.log(data);
       setUserData(data);
-      console.log(userData);
 
       if (res.status === 401) {
         navigate("/login");
