@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const authenticate = require("../middleware/authenticate");
+const cookieParser = require("cookie-parser");
 
 // -----------DB connection------
 require("../db/conn");
@@ -11,6 +13,8 @@ const { set } = require("mongoose");
 router.get("/", (req, res) => {
   res.send("This is the file send from auth.js..");
 });
+
+router.use(cookieParser());
 
 // ---------------- With Promises --------------------------------
 
@@ -113,7 +117,7 @@ router.post("/signin", async (req, res) => {
 });
 
 router.get("/aboutme", authenticate, (req, res) => {
-  res.send("this is about me page...");
+  console.log("this is my  about page");
   res.send(req.rootUser);
 });
 
