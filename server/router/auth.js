@@ -46,6 +46,7 @@ router.get("/", (req, res) => {
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
   if (!name || !email || !phone || !work || !password || !cpassword) {
+    console.log("saara bhara...");
     return res
       .status(422)
       .json({ error: "This is an error enter value correctly..." });
@@ -55,14 +56,17 @@ router.post("/register", async (req, res) => {
     const existUser = await User.findOne({ email: email });
 
     if (existUser) {
+      console.log("exist user");
       return res.status(422).json({ error: "Email Already available..." });
     } else if (password != cpassword) {
+      console.log("password not matched");
       return res.status(422).json({ error: "Password is no matching..." });
     } else {
       const user = new User({ name, email, phone, work, password, cpassword });
 
       await user.save();
       res.status(201).json({ message: "data inserted sucessfully..." });
+      console.log("success");
     }
   } catch (err) {
     console.log(err);
@@ -94,11 +98,14 @@ router.post("/signin", async (req, res) => {
         });
 
         res.status(201).json({ message: "user login successfully..." });
+        console.log("miracle login hogya");
       } else {
         res.status(401).json({ error: "wrong credentials..." });
+        console.log("nhi hua match");
       }
     } else {
       res.status(401).json({ error: "wrong credentials..." });
+      console.log("user hai hi nhiii....");
     }
   } catch (err) {
     res.status(404).json({ err: err });
