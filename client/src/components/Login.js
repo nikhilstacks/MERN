@@ -1,16 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const check = async (e) => {
+    e.preventDefault();
+
+    const { email, password } = user;
+    const res = await fetch("/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (res.status === 422 || !data) {
+      console.log("invalid details");
+      window.alert("INvalid details");
+    } else {
+      console.log("login successfully");
+      window.alert("login successfully");
+    }
+  };
+
+  let name, value;
+  const handleDetails = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+
+    setUser({ ...user, [name]: value });
+  };
+
   return (
     <div id="login-form-wrap">
       <h2>Login</h2>
       <form id="login-form">
         <p>
           <input
-            type="text"
+            type="email"
             id="username"
-            name="username"
-            placeholder="Username"
+            name="email"
+            placeholder="Username/email"
+            value={user.email}
+            onChange={handleDetails}
             required
           />
           <i className="validation">
@@ -20,10 +61,12 @@ const Login = () => {
         </p>
         <p>
           <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email Address"
+            type="password"
+            id="password"
+            onChange={handleDetails}
+            name="password"
+            value={user.password}
+            placeholder="password"
             required
           />
           <i className="validation">
@@ -32,7 +75,7 @@ const Login = () => {
           </i>
         </p>
         <p>
-          <input type="submit" id="login" value="Login" />
+          <input type="submit" id="login" value="Login" onClick={check} />
         </p>
       </form>
       <div id="create-account-wrap">
