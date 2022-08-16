@@ -100,15 +100,15 @@ router.post("/signin", async (req, res) => {
         res.status(201).json({ message: "user login successfully..." });
         console.log("miracle login hogya");
       } else {
-        res.status(401).json({ error: "wrong credentials..." });
+        res.status(400).json({ error: "wrong credentials..." });
         console.log("nhi hua match");
       }
     } else {
-      res.status(401).json({ error: "wrong credentials..." });
+      res.status(400).json({ error: "wrong credentials..." });
       console.log("user hai hi nhiii....");
     }
   } catch (err) {
-    res.status(404).json({ err: err });
+    res.status(400).json({ err: err });
   }
 });
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigation = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -23,12 +25,14 @@ const Login = () => {
 
     const data = await res.json();
 
-    if (res.status === 422 || !data) {
+    if (res.status === 400 || !data) {
       console.log("invalid details");
       window.alert("INvalid details");
     } else {
       console.log("login successfully");
       window.alert("login successfully");
+
+      navigation("/");
     }
   };
 
@@ -43,7 +47,7 @@ const Login = () => {
   return (
     <div id="login-form-wrap">
       <h2>Login</h2>
-      <form id="login-form">
+      <form method="POST" id="login-form">
         <p>
           <input
             type="email"
