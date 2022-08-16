@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import aboutCss from "./about.module.css";
 
 const About = () => {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState({});
+
   const callAboutPage = async () => {
     try {
       const res = await fetch("/aboutme", {
@@ -16,6 +19,8 @@ const About = () => {
 
       const data = await res.json();
       console.log(data);
+      setUserData(data);
+      console.log(userData);
 
       if (res.status === 401) {
         navigate("/login");
@@ -35,6 +40,18 @@ const About = () => {
     <div className="pt-5">
       <p>Welcome</p>
       <h1>This is my about page..</h1>
+      <h1>
+        name of the user: <span>{userData.name}</span>
+      </h1>
+      <h1>
+        phone number of the user : <span>{userData.phone}</span>
+      </h1>
+      <h1>
+        work of the user: <span>{userData.work}</span>
+      </h1>
+      <h1>
+        email of the user: <span>{userData.email}</span>
+      </h1>
     </div>
   );
 };
