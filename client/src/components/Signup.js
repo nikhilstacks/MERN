@@ -47,7 +47,6 @@ const Signup = () => {
       window.alert("INvalid registration");
       console.log("INvalid registration");
     } else {
-      await console.log(res, data);
       window.alert("registration successfull");
       console.log("registration successfull");
 
