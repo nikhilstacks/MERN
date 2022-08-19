@@ -131,4 +131,24 @@ router.get("/getdata", authenticate, (req, res) => {
   res.send(req.rootUser);
 });
 
+router.post("/contact", authenticate, async (req, res) => {
+  const { message } = req.body;
+  if (!message) {
+    res.status(422).send({ message: "INVALID MESSAGE..." });
+    console.log("poora bhar");
+    return;
+  }
+
+  const userMessage = await User.findOne({ _id: req.userId });
+  if (userMessage) {
+    const sendMessage = userMessage.addMessage(message);
+
+    // await userMessage.save();
+
+    res.status(201).send({ message: "user contact successfully" });
+  } else {
+    res.status(422).send({ message: "this is not valid message" });
+  }
+});
+
 module.exports = router;

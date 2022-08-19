@@ -23,10 +23,6 @@ app.get("/", (req, res) => {
   res.send(`This is the home page...`);
 });
 
-app.get("/contact", (req, res) => {
-  res.send("this is contact page...");
-});
-
 app.get("/signin", (req, res) => {
   res.send("this is signin page...");
 });

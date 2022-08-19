@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Contact = () => {
-  const [message, setMessage] = useState({
+  const [messages, setMessage] = useState({
     message: "",
   });
 
@@ -10,12 +10,12 @@ const Contact = () => {
     name = e.target.name;
     value = e.target.value;
 
-    setMessage({ ...message, [name]: value });
+    setMessage({ ...messages, [name]: value });
   };
 
   const sendMessage = async (e) => {
     e.preventDefault();
-    const { message } = message;
+    const { message } = messages;
 
     const res = await fetch("/contact", {
       method: "POST",
@@ -29,8 +29,9 @@ const Contact = () => {
 
     const data = await res.json();
 
-    if (res.status === 422 || !data) {
-      console.log("enter something to send");
+    if (res.status === 422 || res.status === 401 || !data) {
+      console.log("enter something to send/ or not authorized");
+      console.log(data);
     } else {
       console.log("message send successfully");
       window.alert("your message has been send successfully");
@@ -47,7 +48,7 @@ const Contact = () => {
         <textarea
           placeholder="Enter your message here"
           name="message"
-          value={message.message}
+          value={messages.message}
           onChange={messageValue}
         ></textarea>
         <br></br>
