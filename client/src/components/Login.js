@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   const navigation = useNavigate();
@@ -8,6 +9,7 @@ const Login = () => {
     password: "",
   });
 
+  //sending email and password to the backend to check user exist in the database or not-------------------
   const check = async (e) => {
     e.preventDefault();
 
@@ -36,6 +38,7 @@ const Login = () => {
     }
   };
 
+  // setting state of the user input email and password------------------------------------------------
   let name, value;
   const handleDetails = (e) => {
     name = e.target.name;
@@ -84,7 +87,7 @@ const Login = () => {
       </form>
       <div id="create-account-wrap">
         <p>
-          Not a member? <a href="/signup">Create Account</a>
+          Not a member? <NavLink to="/signup">Create Account</NavLink>
         </p>
       </div>
     </div>

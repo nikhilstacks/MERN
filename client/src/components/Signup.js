@@ -13,6 +13,7 @@ const Signup = () => {
     cpassword: "",
   });
 
+  // setting state user what typed in the input boxes-------------------------------------------------
   let name, value;
   const handleInput = (e) => {
     name = e.target.name; //taking name of the input field
@@ -21,6 +22,7 @@ const Signup = () => {
     setUser({ ...user, [name]: value }); //using rest operator to open object and overwriting existing  value
   };
 
+  // setting all data of the usesr in the database-----------------------------------------------------
   const PostData = async (e) => {
     e.preventDefault();
 
@@ -59,6 +61,7 @@ const Signup = () => {
       <div className="row d-flex justify-content-center">
         <div className="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
           <div className="card">
+            <h1>SIGNUP</h1>
             <form method="POST" className="form-card">
               <div className="row justify-content-between text-left">
                 <div className="form-group col-sm-6 flex-column d-flex">

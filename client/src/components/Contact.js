@@ -5,6 +5,7 @@ const Contact = () => {
     message: "",
   });
 
+  // setting state of message every time user pressess a key----------------------------------------
   let name, value;
   const messageValue = (e) => {
     name = e.target.name;
@@ -13,6 +14,7 @@ const Contact = () => {
     setMessage({ ...messages, [name]: value });
   };
 
+  // sending post request to the backend--------------------------------------------------------------
   const sendMessage = async (e) => {
     e.preventDefault();
     const { message } = messages;
@@ -46,10 +48,13 @@ const Contact = () => {
         <label>Message</label>
         <br></br>
         <textarea
+          cols="70"
+          rows="10"
           placeholder="Enter your message here"
           name="message"
           value={messages.message}
           onChange={messageValue}
+          style={{ resize: "none" }}
         ></textarea>
         <br></br>
         <button type="submit" onClick={sendMessage}>

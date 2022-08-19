@@ -5,6 +5,7 @@ const Home = () => {
   const [userData, setUserData] = useState({});
   const [userLogged, setUserLogged] = useState(false);
 
+  // getting person details from backend to show name of the user------------------------------------
   const callHomePage = async () => {
     try {
       const res = await fetch("/getdata", {

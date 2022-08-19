@@ -77,6 +77,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
+//---------------------------------signin-------------------------------------------
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -126,11 +127,12 @@ router.get("/aboutme", authenticate, (req, res) => {
   res.send(req.rootUser);
 });
 
-//getting data for the home page
+//-------------------getting data for the home page-----------------------------------------------
 router.get("/getdata", authenticate, (req, res) => {
-  res.send(req.rootUser);
+  res.send(req.rootUser); //sending data of the authenticated user as response
 });
 
+//-----------------------------------contact/message----------------------------------------
 router.post("/contact", authenticate, async (req, res) => {
   const { message } = req.body;
   if (!message) {
@@ -142,14 +144,19 @@ router.post("/contact", authenticate, async (req, res) => {
   const userMessage = await User.findOne({ _id: req.userId });
   if (userMessage) {
     const sendMessage = userMessage.addMessage(message);
+    console.log("this is message which is sent: ", sendMessage);
 
     // await userMessage.save();
 
-    res.status(201).send({ message: "user contact successfully" });
+    res
+      .status(201)
+      .send({ message: "user message sent successfully successfully" });
   } else {
     res.status(422).send({ message: "this is not valid message" });
   }
 });
+
+//-----------------------------------logout----------------------------------------------
 router.get("/logout", authenticate, (req, res) => {
   console.log("successfully entering logout");
   res.clearCookie("jwtToken", { path: "/" });

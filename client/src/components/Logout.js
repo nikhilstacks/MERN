@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 
 const Logout = () => {
   const navigate = useNavigate();
+
+  // Promises -> sending a get request to backend and deleting coockies in the backend-----------------------
   useEffect(() => {
     fetch("/logout", {
       method: "GET",
