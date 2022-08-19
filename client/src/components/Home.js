@@ -43,7 +43,7 @@ const Home = () => {
       <h1>
         {userLogged
           ? `welcome back ${userData.name}`
-          : "This is my home page.."}
+          : "This is my home page / LOGIN! to access details.."}
       </h1>
     </div>
   );
