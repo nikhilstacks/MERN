@@ -10,9 +10,6 @@ const User = require("../model/userSchema");
 const { set } = require("mongoose");
 
 // ------------Routes-----------
-router.get("/", (req, res) => {
-  res.send("This is the file send from auth.js..");
-});
 
 router.use(cookieParser());
 
