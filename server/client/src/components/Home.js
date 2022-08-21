@@ -15,8 +15,6 @@ const Home = () => {
         },
       });
 
-      console.log(res);
-
       const data = await res.json();
       // console.log(data); //here we will get all details from database of authenticated user
       setUserData(data);
@@ -30,7 +28,7 @@ const Home = () => {
         throw error;
       }
     } catch (err) {
-      console.log(err);
+      console.log("not logged in");
     }
   };
 

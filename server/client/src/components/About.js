@@ -26,7 +26,7 @@ const About = () => {
         throw error;
       }
     } catch (err) {
-      console.log(err);
+      console.log("not logged in currently...");
     }
   };
 
