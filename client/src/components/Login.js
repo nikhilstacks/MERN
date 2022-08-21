@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { UserContext } from "../App";
 
 const Login = () => {
-  const { state, dispatch } = useContext(UserContext);
+  const { dispatch } = useContext(UserContext);
   const navigation = useNavigate();
   const [user, setUser] = useState({
     email: "",

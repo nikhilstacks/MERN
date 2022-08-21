@@ -32,7 +32,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
-      <UserContext.Provider value={(state, dispatch)}>
+      <UserContext.Provider value={{ state, dispatch }}>
         <Navbar />
         <Routing />
       </UserContext.Provider>

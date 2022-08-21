@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { UserContext } from "../App";
 
 const Logout = () => {
-  const { state, dispatch } = UserContext(UserContext);
+  const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
   // Promises -> sending a get request to backend and deleting coockies in the backend-----------------------
