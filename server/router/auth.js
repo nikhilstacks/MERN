@@ -143,7 +143,7 @@ router.post("/contact", authenticate, async (req, res) => {
 
   const userMessage = await User.findOne({ _id: req.userId });
   if (userMessage) {
-    const sendMessage = userMessage.addMessage(message);
+    const sendMessage = await userMessage.addMessage(message);
     console.log("this is message which is sent: ", sendMessage);
 
     // await userMessage.save();
