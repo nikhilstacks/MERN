@@ -16,7 +16,7 @@ require("./db/conn");
 const PORT = process.env.PORT;
 
 // ---------  Routes   -------------
-app.use(express.json()); // converting returning data into object form from json type
+app.use(express.json()); // converting returning data into object from json type
 app.use(require("./router/auth"));
 
 app.get("/", (req, res) => {
