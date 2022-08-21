@@ -19,18 +19,6 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json()); // converting returning data into object from json type
 app.use(require("./router/auth"));
 
-app.get("/", (req, res) => {
-  res.send(`This is the home page...`);
-});
-
-app.get("/signin", (req, res) => {
-  res.send("this is signin page...");
-});
-
-app.get("/signup", (req, res) => {
-  res.send("this is contact page...");
-});
-
 // for heroku
 if (
   process.env.NODE_ENV === "production" ||
