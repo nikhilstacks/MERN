@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../App";
 
 const Login = () => {
+  const { state, dispatch } = useContext(UserContext);
   const navigation = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -31,6 +33,7 @@ const Login = () => {
       console.log("invalid details");
       window.alert("INvalid details");
     } else {
+      dispatch({ type: "USER", payload: true });
       console.log("login successfully");
       window.alert("login successfully");
 
