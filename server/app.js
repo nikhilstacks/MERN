@@ -13,7 +13,7 @@ require("./db/conn");
 // const USER = require("../model/userSchema");
 
 // ---------   PORT    --------------
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 // ---------  Routes   -------------
 app.use(express.json()); // converting returning data into object from json type
@@ -30,6 +30,11 @@ app.get("/signin", (req, res) => {
 app.get("/signup", (req, res) => {
   res.send("this is contact page...");
 });
+
+// for heroku
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("client/build"));
+}
 
 app.listen(PORT, () => {
   console.log(`Server successfully running on port ${PORT}...`);
