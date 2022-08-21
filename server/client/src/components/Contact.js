@@ -33,7 +33,6 @@ const Contact = () => {
 
     if (res.status === 422 || res.status === 401 || !data) {
       console.log("enter something to send/ or not authorized");
-      console.log(data);
     } else {
       console.log("message send successfully");
       window.alert("your message has been send successfully");

@@ -18,7 +18,7 @@ const Home = () => {
       console.log(res);
 
       const data = await res.json();
-      console.log(data); //here we will get all details from database of authenticated user
+      // console.log(data); //here we will get all details from database of authenticated user
       setUserData(data);
 
       if (res.status !== 401) {

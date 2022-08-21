@@ -37,7 +37,6 @@ const Logout = () => {
         console.log(err);
       });
   }, []);
-  return <div>this is our logout Page</div>;
 };
 
 export default Logout;
