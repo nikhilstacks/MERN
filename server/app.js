@@ -1,3 +1,4 @@
+// closing project on 24/08/2022------CSS can be improved-----------other than that everything is good
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const express = require("express");
