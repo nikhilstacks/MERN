@@ -156,7 +156,7 @@ router.post("/contact", authenticate, async (req, res) => {
 //-----------------------------------logout----------------------------------------------
 router.get("/logout", authenticate, (req, res) => {
   console.log("successfully entering logout");
-  res.clearCookie("jwtToken", { path: "/" });
+  res.clearCookie("jwtToken", { path: "/" }); //to remove the response cookie
   res.send({ message: "user Logged out successfully" });
 });
 
